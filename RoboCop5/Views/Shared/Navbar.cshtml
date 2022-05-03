@@ -1,0 +1,36 @@
+﻿@model RoboCop5.Models.Navbar
+
+<nav class="navbar navbar-default ms-auto">
+
+    <div class="container-fluid">
+
+        <img src="~/Content/Images/Logo2.JPG" alt="Logo" height="80" class="d-inline-block align-text-top" />
+
+        @if (Model == null)
+        {
+            <div class="navbar-nav ms-auto d-inline-block">
+                <button class="btn btn-outline-default my-2 my-sm-0 gombszin" type="submit">
+                    @Html.ActionLink("Regisztráció", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
+                </button>
+
+                <button class="btn btn-outline-default my-2 my-sm-0" type="submit">
+                    @Html.ActionLink("Bejelentkezés", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
+                </button>
+            </div>
+        }
+        else
+        {
+            <ul class="navbar-nav ms-auto d-inline-block">
+
+                @foreach (var a in Model.UsersMenus)
+                {
+                    <li><a href="@a.MPATH">@a.MTEXT</a>  </li>
+                }
+                <li><a href="">Új szűrés</a></li>
+                <li><a href="">LogOff</a></li>
+            </ul>
+        }
+
+    </div>
+
+</nav>
